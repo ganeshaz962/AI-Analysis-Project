@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TTG Friends</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    h1 { font-size: 48px; font-weight: 800; letter-spacing: -1px; }
+    p  { font-size: 18px; color: #93c5fd; margin-top: 12px; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 36px;
+      background: #fff;
+      color: #0f3460;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+
+    .note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TTG Friends</h1>
+    <p>Welcome! Please sign in to continue.</p>
+    <a href="/login" class="btn">Go to Login</a>
+    <p class="note">Protected by Cloudflare WAF &mdash; only /login path is allowed</p>
+  </div>
+</body>
+</html>
