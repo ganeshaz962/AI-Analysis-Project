@@ -3,10 +3,6 @@
     {
       "route": "/login",
       "rewrite": "/login/index.html"
-    },
-    {
-      "route": "/login/",
-      "rewrite": "/login/index.html"
     }
   ],
   "navigationFallback": {
