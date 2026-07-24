@@ -14,28 +14,28 @@ const GALLERY = [
 // Quotes Data - Fun quotes from your friends
 const QUOTES = [
   { 
-    text: 'The best memories are made with friends and a lot of crazy moments!', 
-    author: '~ Arjun' 
+    text: 'A true leader leads by example and brings the team together.', 
+    author: '~ Thanga (Thalaivar)' 
   },
   { 
-    text: 'Life was meant for good friends and great adventures, and we have both!', 
-    author: '~ Rahul' 
+    text: 'The best support is standing beside someone when they need you most.', 
+    author: '~ SenthilCena (Thunai Thalaivar)' 
+  },
+  { 
+    text: 'The right guidance can change the course of everything.', 
+    author: '~ SenthiKumar (PRO)' 
+  },
+  { 
+    text: 'Technology and innovation are the backbone of modern progress.', 
+    author: '~ Ganesh (Digital & IT)' 
+  },
+  { 
+    text: 'Design is not just about aesthetics, it\'s about creating experiences.', 
+    author: '~ Gowtham Karthic (Graphic Designer)' 
   },
   { 
     text: 'Brothers by choice, chaos by default - TTGuys forever!', 
-    author: '~ Priya' 
-  },
-  { 
-    text: 'Surround yourself with those who make you laugh a little louder, smile a little brighter.', 
-    author: '~ Rohit' 
-  },
-  { 
-    text: 'True friends are never apart, maybe in distance but not in heart.', 
-    author: '~ Ananya' 
-  },
-  { 
-    text: 'A day without laughter is a day wasted. Good thing we have TTGuys!', 
-    author: '~ Karan' 
+    author: '~ The Whole Crew' 
   },
 ];
 
