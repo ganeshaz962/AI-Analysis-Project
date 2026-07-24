@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TTG Friends — The Inner Circle</title>
+  <title>TTGuys</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,13 +69,12 @@
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center font-black text-slate-900 text-sm">T</div>
-        <span class="font-display font-bold text-lg">TTG Friends</span>
+        <span class="font-display font-bold text-lg">TTGuys</span>
         <span class="hidden sm:inline text-xs text-slate-500 border border-slate-700 rounded-full px-2 py-0.5">Est. 2018</span>
       </div>
       <div class="hidden md:flex gap-7 text-sm text-slate-400">
         <a href="#gallery" class="hover:text-cyan-400 transition-colors">Gallery</a>
         <a href="#events"  class="hover:text-cyan-400 transition-colors">Events</a>
-        <a href="#quotes"  class="hover:text-cyan-400 transition-colors">Quotes</a>
       </div>
       <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
          class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
@@ -148,8 +147,7 @@
         <button class="filter-btn active px-4 py-2 rounded-full text-sm border border-slate-600 transition-all" data-filter="all">All</button>
         <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="trips">🏖 Trips</button>
         <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="birthdays">🎂 Birthdays</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="random">📸 Random</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="shame">😅 Hall of Shame</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="events">🎉 Events</button>
       </div>
       <div class="masonry" id="gallery-grid"></div>
     </div>
@@ -159,9 +157,7 @@
   <section id="events" class="py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16 fade-up">
-        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Company Calendar</p>
-        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Event Roadmap</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">Past achievements and upcoming initiatives. Attendance mandatory.</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Events</h2>
       </div>
       <div class="timeline-line" id="timeline"></div>
     </div>
@@ -197,7 +193,7 @@
       <div class="flex items-center gap-3">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center font-black text-slate-900 text-sm">T</div>
         <div>
-          <div class="font-display font-bold">TTG Friends</div>
+          <div class="font-display font-bold">TTGuys</div>
           <div class="text-slate-500 text-xs">© 2026 The Boys. All rights reserved.</div>
         </div>
       </div>
@@ -221,15 +217,17 @@
     // ════════════════════════════════════════════════════════
 
     const GALLERY = [
+      // TRIPS — replace src with your Cloudinary/image URLs
       { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80", category: "trips",     label: "Goa 2023" },
-      { src: "https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80", category: "birthdays", label: "Birthday Bash" },
       { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", category: "trips",     label: "Manali 2022" },
-      { src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80", category: "birthdays", label: "Surprise Party" },
       { src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80", category: "trips",     label: "Camping Trip" },
-      { src: "https://images.unsplash.com/photo-1543269664-76bc3997d9ea?w=600&q=80", category: "random",    label: "Just Vibes" },
-      { src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80", category: "random",    label: "Random Tuesday" },
-      { src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80", category: "shame",     label: "Don't Ask" },
       { src: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=80", category: "trips",     label: "Beach Day" },
+      // BIRTHDAYS — replace with your photos
+      { src: "https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80", category: "birthdays", label: "Birthday Bash" },
+      { src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80", category: "birthdays", label: "Surprise Party" },
+      // EVENTS — replace with your photos
+      { src: "https://images.unsplash.com/photo-1543269664-76bc3997d9ea?w=600&q=80", category: "events",    label: "New Year 2024" },
+      { src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80", category: "events",    label: "Annual Meetup" },
     ];
 
     const EVENTS = [
@@ -240,13 +238,7 @@
       { date: "Dec 2026", title: "Year-End Gala",      desc: "Black tie optional. Chaos mandatory.",                       type: "upcoming", targetDate: "2026-12-20", rsvp: "https://forms.google.com" },
     ];
 
-    const QUOTES = [
-      { text: "I'll be there in 10 minutes.",               author: "Someone, every time",     title: "Chief Late Arrival Officer" },
-      { text: "This is the last time I'm planning anything for you people.", author: "The Planner", title: "Chief Planning Officer (Resigned)" },
-      { text: "It's not that far, trust me.",               author: "The Navigator",            title: "VP of Wrong Directions" },
-      { text: "We said we'd do this every month.",          author: "All of Us, 2019",          title: "Collective Memory" },
-      { text: "Who shared my photo in that state?",        author: "Confidential",             title: "Head of PR & Damage Control" },
-    ];
+
 
     // ════════════════════════════════════════════════════════
     // GALLERY
@@ -324,41 +316,6 @@
     }
     tick();
     setInterval(tick, 60000);
-
-    // ════════════════════════════════════════════════════════
-    // QUOTES SLIDER
-    // ════════════════════════════════════════════════════════
-    let qIdx = 0;
-    const qContainer = document.getElementById('quote-container');
-    const qDots      = document.getElementById('quote-dots');
-
-    QUOTES.forEach((q, i) => {
-      const initials = q.author.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-      qContainer.innerHTML += `
-        <div class="quote-slide ${i === 0 ? 'active' : ''}">
-          <p class="text-white text-xl sm:text-2xl font-medium leading-relaxed mb-6">${q.text}</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-900 font-bold text-sm flex-shrink-0">${initials}</div>
-            <div>
-              <div class="text-white font-semibold text-sm">${q.author}</div>
-              <div class="text-slate-500 text-xs">${q.title}</div>
-            </div>
-          </div>
-        </div>`;
-      qDots.innerHTML += `<button class="h-2 rounded-full transition-all duration-300 ${i === 0 ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-600'}" onclick="goToQuote(${i})"></button>`;
-    });
-
-    function goToQuote(n) {
-      document.querySelectorAll('.quote-slide').forEach((s, i) => s.classList.toggle('active', i === n));
-      document.querySelectorAll('#quote-dots button').forEach((d, i) => {
-        d.className = `h-2 rounded-full transition-all duration-300 ${i === n ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-600'}`;
-      });
-      qIdx = n;
-    }
-    function nextQuote() { goToQuote((qIdx + 1) % QUOTES.length); }
-    function prevQuote() { goToQuote((qIdx - 1 + QUOTES.length) % QUOTES.length); }
-    const autoSlide = setInterval(nextQuote, 5000);
-    document.querySelector('#quotes').addEventListener('mouseenter', () => clearInterval(autoSlide));
 
     // ════════════════════════════════════════════════════════
     // LIGHTBOX
