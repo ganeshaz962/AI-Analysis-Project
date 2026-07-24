@@ -22,20 +22,12 @@ const QUOTES = [
     author: '~ SenthilCena (Thunai Thalaivar)' 
   },
   { 
-    text: 'The right guidance can change the course of everything.', 
-    author: '~ SenthiKumar (PRO)' 
-  },
-  { 
     text: 'Technology and innovation are the backbone of modern progress.', 
     author: '~ Ganesh (Digital & IT)' 
   },
   { 
-    text: 'Design is not just about aesthetics, it\'s about creating experiences.', 
-    author: '~ Gowtham Karthic (Graphic Designer)' 
-  },
-  { 
     text: 'Brothers by choice, chaos by default - TTGuys forever!', 
-    author: '~ The Whole Crew' 
+    author: '~ The Crew' 
   },
 ];
 
@@ -45,31 +37,19 @@ const MEMBERS = [
     name: 'Thanga', 
     role: 'Thalaivar',
     bio: '',
-    image: ''
+    image: 'https://res.cloudinary.com/z4fhnhlq/image/upload/v1784901621/IMG-20260126-WA0000_lzxhw9.jpg'
   },
   { 
     name: 'SenthilCena', 
     role: 'Thunai Thalaivar',
     bio: '',
-    image: ''
-  },
-  { 
-    name: 'SenthiKumar(sky)', 
-    role: 'PRO',
-    bio: '',
-    image: ''
+    image: 'https://res.cloudinary.com/z4fhnhlq/image/upload/v1784901873/IMG-20240614-WA0000_do2dzl.jpg'
   },
   { 
     name: 'Ganesh', 
     role: 'Digital&IT',
     bio: '',
-    image: ''
-  },
-  { 
-    name: 'Gowtham Karthic', 
-    role: 'Graphic Designer',
-    bio: '',
-    image: ''
+    image: 'https://res.cloudinary.com/z4fhnhlq/image/upload/v1784901594/ET3A1626_dyudsn.jpg'
   },
 ];
 
