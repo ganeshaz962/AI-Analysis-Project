@@ -1,17 +1,13 @@
 {
   "routes": [
     {
-      "route": "/login",
-      "rewrite": "/login/index.html"
-    },
-    {
       "route": "/",
       "rewrite": "/index.html"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/login"]
+    "exclude": []
   },
   "responseOverrides": {
     "404": {
