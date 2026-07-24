@@ -42,28 +42,34 @@ const QUOTES = [
 // Members Data - Add member information
 const MEMBERS = [
   { 
-    name: 'Arjun', 
-    role: 'Trip Planner', 
-    bio: 'Always up for adventure and finding the best travel spots!',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop'
+    name: 'Thanga', 
+    role: 'Thalaivar',
+    bio: '',
+    image: ''
   },
   { 
-    name: 'Rahul', 
-    role: 'Tech Guy', 
-    bio: 'Handles all our tech needs and keeps the group connected.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop'
+    name: 'SenthilCena', 
+    role: 'Thunai Thalaivar',
+    bio: '',
+    image: ''
   },
   { 
-    name: 'Priya', 
-    role: 'Event Organizer', 
-    bio: 'Makes sure every celebration is memorable and fun.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop'
+    name: 'SenthiKumar(sky)', 
+    role: 'PRO',
+    bio: '',
+    image: ''
   },
   { 
-    name: 'Rohit', 
-    role: 'Foodie', 
-    bio: 'Our official food critic and restaurant scout.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop'
+    name: 'Ganesh', 
+    role: 'Digital&IT',
+    bio: '',
+    image: ''
+  },
+  { 
+    name: 'Gowtham Karthic', 
+    role: 'Graphic Designer',
+    bio: '',
+    image: ''
   },
 ];
 
@@ -71,22 +77,12 @@ const MEMBERS = [
 const TIMELINE = [
   { 
     year: '2018', 
-    title: 'TTGuys Founded', 
+    title: 'TTGuys Found and WhatsApp Created', 
     description: 'A group of friends decided to create lifelong memories together.' 
   },
   { 
-    year: '2019', 
-    title: 'First Group Trip', 
-    description: 'Epic adventure to Goa that started the tradition of exploring together.' 
-  },
-  { 
-    year: '2021', 
-    title: 'WhatsApp Group Started', 
-    description: 'Daily banter, memes, and plans - the digital heart of TTGuys.' 
-  },
-  { 
-    year: '2024', 
-    title: 'Official Website Launch', 
+    year: '2026', 
+    title: 'Site Launched', 
     description: 'Creating a digital home for all our memories and moments.' 
   },
 ];
