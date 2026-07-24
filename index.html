@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TTGuys</title>
+  <meta name="description" content="TTGuys - A group of best friends sharing memories since 2018. Brothers by choice. Chaos by default." />
+  <meta name="keywords" content="friends, memories, trips, celebrations, TTGuys" />
+  <meta property="og:title" content="TTGuys - Brothers by Choice" />
+  <meta property="og:description" content="A group of friends creating lifelong memories together." />
+  <meta property="og:image" content="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>TTGuys - Brothers by Choice</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
   <script>
     tailwind.config = {
       theme: {
@@ -21,46 +29,6 @@
       }
     }
   </script>
-  <style>
-    .gradient-text {
-      background: linear-gradient(135deg, #06b6d4, #10b981);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.5); }
-    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0f172a; }
-    ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 4px; }
-    .timeline-line { position: relative; }
-    .timeline-line::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #06b6d4, #10b981);
-      transform: translateX(-50%);
-    }
-    @media (max-width: 640px) {
-      .timeline-line::before { left: 20px; }
-      .tl-row { flex-direction: column !important; padding-left: 48px; }
-      .tl-dot { left: 20px !important; }
-      .tl-spacer { display: none; }
-    }
-    .masonry { columns: 3; column-gap: 1rem; }
-    @media (max-width: 768px) { .masonry { columns: 2; } }
-    @media (max-width: 480px) { .masonry { columns: 1; } }
-    .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
-    .quote-slide { display: none; animation: fadeIn 0.4s ease; }
-    .quote-slide.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .filter-btn.active { background: #06b6d4; color: #0f172a; border-color: #06b6d4; font-weight: 600; }
-  </style>
 </head>
 <body class="bg-slate-900 text-white font-sans antialiased">
 
@@ -73,7 +41,11 @@
         <span class="hidden sm:inline text-xs text-slate-500 border border-slate-700 rounded-full px-2 py-0.5">Est. 2018</span>
       </div>
       <div class="hidden md:flex gap-7 text-sm text-slate-400">
+        <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+        <a href="#timeline" class="hover:text-cyan-400 transition-colors">Timeline</a>
+        <a href="#members" class="hover:text-cyan-400 transition-colors">Members</a>
         <a href="#gallery" class="hover:text-cyan-400 transition-colors">Gallery</a>
+        <a href="#quotes" class="hover:text-cyan-400 transition-colors">Quotes</a>
       </div>
       <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
          class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
@@ -85,14 +57,11 @@
 
   <!-- ── HERO ───────────────────────────────────────────── -->
   <section class="relative w-full mt-16">
-    <!-- Image fills full width, height auto — no cropping on any screen -->
     <img src="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png"
          alt="Thala Thanga Guys"
          class="w-full h-auto block"
          onerror="this.style.display='none'" />
-    <!-- Bottom gradient overlay for text -->
     <div class="absolute bottom-0 left-0 right-0 h-40 sm:h-52 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
-    <!-- Name + button at bottom -->
     <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-5 sm:pb-8">
       <h1 class="font-display font-black leading-none mb-1">
         <span class="gradient-text text-3xl sm:text-5xl md:text-6xl">Thala</span>
@@ -106,13 +75,75 @@
     </div>
   </section>
 
+  <!-- ── ABOUT SECTION ──────────────────────────────────── -->
+  <section id="about" class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">About Us</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Who Are We?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="fade-up">
+          <p class="text-slate-300 mb-4">TTGuys started in 2018 as a group of friends with a simple mission: create unforgettable memories together. What began as casual hangouts has evolved into a brotherhood built on laughter, adventure, and unwavering support for one another.</p>
+          <p class="text-slate-300 mb-4">We believe in living life to the fullest, celebrating every milestone, and being there for each other through thick and thin. Every trip, every birthday, every moment we share adds another chapter to our story.</p>
+        </div>
+        <div class="fade-up">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 text-center card-hover">
+              <h3 class="text-4xl font-black gradient-text mb-2">2018</h3>
+              <p class="text-slate-400 text-sm">Founded</p>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 text-center card-hover">
+              <h3 class="text-4xl font-black gradient-text mb-2">∞</h3>
+              <p class="text-slate-400 text-sm">Memories</p>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 text-center card-hover">
+              <h3 class="text-4xl font-black gradient-text mb-2">100%</h3>
+              <p class="text-slate-400 text-sm">Chaos</p>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 text-center card-hover">
+              <h3 class="text-4xl font-black gradient-text mb-2">♾️</h3>
+              <p class="text-slate-400 text-sm">Fun</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TIMELINE SECTION ──────────────────────────────── -->
+  <section id="timeline" class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Our Journey</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl">TTGuys Timeline</h2>
+      </div>
+      <div id="timeline-container" class="relative"></div>
+    </div>
+  </section>
+
+  <!-- ── MEMBERS SECTION ──────────────────────────────── -->
+  <section id="members" class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">The Crew</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl">Meet The Team</h2>
+      </div>
+      <div id="members-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
   <!-- ── MEMORY GALLERY ─────────────────────────────────── -->
   <section id="gallery" class="py-24 px-6 bg-slate-950/60">
     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Memories</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl">Our Photo Gallery</h2>
+      </div>
 
       <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up">
         <button class="filter-btn active px-4 py-2 rounded-full text-sm border border-slate-600 transition-all" data-filter="all">All</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="trips">🏖 Trips</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="trips">🏖️ Trips</button>
         <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="birthdays">🎂 Birthdays</button>
       </div>
       <div class="masonry" id="gallery-grid"></div>
@@ -123,9 +154,9 @@
   <section id="quotes" class="py-24 px-6 bg-slate-950/60">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12 fade-up">
-        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Client Testimonials</p>
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">What They Say</p>
         <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Words of Wisdom</h2>
-        <p class="text-slate-400">Real quotes. Zero context provided.</p>
+        <p class="text-slate-400">Real quotes from the crew. Zero context provided.</p>
       </div>
       <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 sm:p-12 fade-up">
         <div class="text-cyan-400/40 text-7xl font-serif leading-none mb-4 select-none">"</div>
@@ -143,6 +174,18 @@
     </div>
   </section>
 
+  <!-- ── CALL TO ACTION ─────────────────────────────────── -->
+  <section class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-3xl mx-auto text-center fade-up">
+      <h2 class="font-display font-black text-4xl sm:text-5xl mb-6">Join The Chaos</h2>
+      <p class="text-slate-400 mb-8">Be part of the TTGuys community and get updates on all our adventures and celebrations.</p>
+      <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-8 py-4 rounded-xl transition-all hover:scale-105 text-lg">
+        <i class="fab fa-whatsapp text-xl"></i> Join WhatsApp Group
+      </a>
+    </div>
+  </section>
+
   <!-- ── FOOTER ─────────────────────────────────────────── -->
   <footer class="border-t border-slate-800 py-10 px-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -153,83 +196,28 @@
           <div class="text-slate-500 text-xs">© 2026 The Boys. All rights reserved.</div>
         </div>
       </div>
-      <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
-         class="flex items-center gap-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-semibold px-5 py-2.5 rounded-xl transition-all">
-        <i class="fab fa-whatsapp"></i> Join WhatsApp Group
-      </a>
+      <div class="flex gap-4">
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">
+          <i class="fab fa-twitter text-xl"></i>
+        </a>
+        <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">
+          <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+      </div>
     </div>
   </footer>
 
   <!-- ── LIGHTBOX ───────────────────────────────────────── -->
   <div id="lightbox" class="fixed inset-0 z-50 bg-black/92 hidden items-center justify-center p-4" onclick="closeLightbox()">
-    <button class="absolute top-5 right-6 text-white/50 hover:text-white text-2xl"><i class="fas fa-times"></i></button>
+    <button class="absolute top-5 right-6 text-white/50 hover:text-white text-2xl" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
     <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-xl object-contain" onclick="event.stopPropagation()" />
   </div>
 
-  <!-- ── DATA & SCRIPTS ─────────────────────────────────── -->
-  <script>
-    // GALLERY
-    // ════════════════════════════════════════════════════════
-    function renderGallery(filter) {
-      const grid = document.getElementById('gallery-grid');
-      grid.innerHTML = '';
-      GALLERY.filter(i => filter === 'all' || i.category === filter).forEach(item => {
-        grid.innerHTML += `
-          <div class="masonry-item group cursor-pointer" onclick="openLightbox('${item.src}')">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="${item.src}" alt="${item.label}" loading="lazy"
-                   class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                <span class="text-white text-sm font-semibold">${item.label}</span>
-              </div>
-            </div>
-          </div>`;
-      });
-    }
-    renderGallery('all');
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('active'); b.classList.add('text-slate-400');
-        });
-        btn.classList.add('active'); btn.classList.remove('text-slate-400');
-        renderGallery(btn.dataset.filter);
-      });
-    });
-
-
-
-    // ════════════════════════════════════════════════════════
-    // LIGHTBOX
-    // ════════════════════════════════════════════════════════
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      const lb = document.getElementById('lightbox');
-      lb.classList.remove('hidden'); lb.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      const lb = document.getElementById('lightbox');
-      lb.classList.add('hidden'); lb.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-    // ════════════════════════════════════════════════════════
-    // SCROLL ANIMATIONS
-    // ════════════════════════════════════════════════════════
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-
-    function observeAll() {
-      document.querySelectorAll('.fade-up:not([data-obs])').forEach(el => {
-        el.dataset.obs = '1'; io.observe(el);
-      });
-    }
-    observeAll();
-    new MutationObserver(observeAll).observe(document.body, { childList: true, subtree: true });
-  </script>
+  <!-- ── SCRIPTS ─────────────────────────────────────── -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
