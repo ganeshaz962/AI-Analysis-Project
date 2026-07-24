@@ -84,35 +84,25 @@
   </nav>
 
   <!-- ── HERO ───────────────────────────────────────────── -->
-  <section class="relative h-screen overflow-hidden">
-    <!-- Full background photo — clearly visible -->
-    <div class="absolute inset-0">
-      <img src="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png"
-           alt="Thala Thanga Guys"
-           class="w-full h-full object-cover object-center scale-125"
-           onerror="this.style.display='none'" />
-      <!-- Dark gradient only at bottom so faces show clearly -->
-      <div class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent"></div>
-      <!-- Very subtle top fade for nav readability -->
-      <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-900/50 to-transparent"></div>
-    </div>
-
-    <!-- Name bar at the very bottom -->
-    <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-10">
-      <h1 class="font-display font-black leading-none mb-2">
-        <span class="gradient-text text-5xl sm:text-6xl md:text-7xl">Thala</span>
-        <span class="text-white text-4xl sm:text-5xl md:text-6xl"> Thanga Guys</span>
+  <section class="relative w-full mt-16">
+    <!-- Image fills full width, height auto — no cropping on any screen -->
+    <img src="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png"
+         alt="Thala Thanga Guys"
+         class="w-full h-auto block"
+         onerror="this.style.display='none'" />
+    <!-- Bottom gradient overlay for text -->
+    <div class="absolute bottom-0 left-0 right-0 h-40 sm:h-52 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+    <!-- Name + button at bottom -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-5 sm:pb-8">
+      <h1 class="font-display font-black leading-none mb-1">
+        <span class="gradient-text text-3xl sm:text-5xl md:text-6xl">Thala</span>
+        <span class="text-white text-2xl sm:text-4xl md:text-5xl"> Thanga Guys</span>
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base mb-5">Brothers by choice. Chaos by default.</p>
+      <p class="text-slate-400 text-xs sm:text-sm mb-3">Brothers by choice. Chaos by default.</p>
       <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-5 py-2.5 rounded-xl transition-all hover:scale-105 text-sm">
+         class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-4 py-2 rounded-xl transition-all hover:scale-105 text-sm">
         <i class="fab fa-whatsapp"></i> Join WhatsApp Group
       </a>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-4 right-6 flex flex-col items-center gap-1 text-slate-500 text-xs animate-bounce z-10">
-      <span>scroll</span><i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
