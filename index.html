@@ -73,7 +73,6 @@
         <span class="hidden sm:inline text-xs text-slate-500 border border-slate-700 rounded-full px-2 py-0.5">Est. 2018</span>
       </div>
       <div class="hidden md:flex gap-7 text-sm text-slate-400">
-        <a href="#team"   class="hover:text-cyan-400 transition-colors">Team</a>
         <a href="#gallery" class="hover:text-cyan-400 transition-colors">Gallery</a>
         <a href="#events"  class="hover:text-cyan-400 transition-colors">Events</a>
         <a href="#quotes"  class="hover:text-cyan-400 transition-colors">Quotes</a>
@@ -134,18 +133,6 @@
     </div>
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 text-xs animate-bounce">
       <span>scroll</span><i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
-
-  <!-- ── BOARD OF DIRECTORS ─────────────────────────────── -->
-  <section id="team" class="py-24 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14 fade-up">
-        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Our People</p>
-        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Board of Directors</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">The leadership team behind every bad idea, every great trip, and every 2am plan that somehow worked.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="team-grid"></div>
     </div>
   </section>
 
@@ -233,15 +220,6 @@
     // EDIT YOUR DATA HERE
     // ════════════════════════════════════════════════════════
 
-    const TEAM = [
-      { name: "Your Name",    title: "Chief Executive Officer",   avatar: "", instagram: "https://instagram.com/" },
-      { name: "Friend 2",     title: "Chief Planning Officer",    avatar: "", instagram: "https://instagram.com/" },
-      { name: "Friend 3",     title: "Meme Director",             avatar: "", instagram: "https://instagram.com/" },
-      { name: "Friend 4",     title: "VP of Late Arrivals",       avatar: "", instagram: "https://instagram.com/" },
-      { name: "Friend 5",     title: "Head of Chaos",             avatar: "", instagram: "https://instagram.com/" },
-      { name: "Friend 6",     title: "Chief Food Officer",        avatar: "", instagram: "https://instagram.com/" },
-    ];
-
     const GALLERY = [
       { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80", category: "trips",     label: "Goa 2023" },
       { src: "https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80", category: "birthdays", label: "Birthday Bash" },
@@ -269,27 +247,6 @@
       { text: "We said we'd do this every month.",          author: "All of Us, 2019",          title: "Collective Memory" },
       { text: "Who shared my photo in that state?",        author: "Confidential",             title: "Head of PR & Damage Control" },
     ];
-
-    // ════════════════════════════════════════════════════════
-    // RENDER TEAM
-    // ════════════════════════════════════════════════════════
-    const teamGrid = document.getElementById('team-grid');
-    TEAM.forEach(m => {
-      const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-      const avatarHtml = m.avatar
-        ? `<img src="${m.avatar}" alt="${m.name}" class="w-full h-full object-cover" />`
-        : `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 text-2xl font-black text-cyan-400 font-display">${initials}</div>`;
-      teamGrid.innerHTML += `
-        <div class="card-hover bg-slate-800/60 border border-slate-700/50 hover:border-cyan-500/30 rounded-2xl p-6 flex flex-col items-center text-center fade-up">
-          <div class="w-20 h-20 rounded-2xl overflow-hidden mb-4 ring-2 ring-slate-700">${avatarHtml}</div>
-          <h3 class="font-display font-bold text-white text-lg leading-tight">${m.name}</h3>
-          <p class="text-cyan-400 text-xs font-medium mt-1 mb-4 leading-tight">${m.title}</p>
-          <a href="${m.instagram}" target="_blank" rel="noopener"
-             class="flex items-center gap-1.5 text-slate-500 hover:text-pink-400 text-sm transition-colors">
-            <i class="fab fa-instagram"></i> Instagram
-          </a>
-        </div>`;
-    });
 
     // ════════════════════════════════════════════════════════
     // GALLERY
