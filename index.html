@@ -84,56 +84,34 @@
   </nav>
 
   <!-- ── HERO ───────────────────────────────────────────── -->
-  <section class="min-h-screen flex flex-col items-end justify-end relative overflow-hidden pt-20 px-6 pb-16">
-    <!-- Hero background photo (watermark effect) -->
-    <!-- UPLOAD YOUR PHOTO: place your image at /images/hero-bg.jpg in the repo -->
-    <div class="absolute inset-0 z-0">
-      <img src="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png" alt=""
-           class="w-full h-full object-cover opacity-20"
+  <section class="relative h-screen overflow-hidden">
+    <!-- Full background photo — clearly visible -->
+    <div class="absolute inset-0">
+      <img src="https://res.cloudinary.com/z4fhnhlq/image/upload/v1784897614/file_00000000083881fbb066eee2ad858240_gfwzui.png"
+           alt="Thala Thanga Guys"
+           class="w-full h-full object-cover object-center scale-125"
            onerror="this.style.display='none'" />
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/95"></div>
+      <!-- Dark gradient only at bottom so faces show clearly -->
+      <div class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent"></div>
+      <!-- Very subtle top fade for nav readability -->
+      <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-900/50 to-transparent"></div>
     </div>
-    <!-- Subtle grid overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10 pointer-events-none z-0"></div>
-    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
 
-    <div class="relative z-10 text-center w-full max-w-4xl mx-auto">
-      <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-cyan-500/30 rounded-full px-4 py-2 text-sm text-cyan-400 mb-8">
-        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-        Officially Unofficial Since 2018
-      </div>
-      <h1 class="font-display font-black leading-tight mb-4">
-        <span class="block gradient-text text-6xl sm:text-7xl md:text-8xl lg:text-9xl">Thala</span>
-        <span class="block text-white  text-5xl sm:text-6xl md:text-7xl lg:text-8xl">Thanga Guys</span>
+    <!-- Name bar at the very bottom -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-10">
+      <h1 class="font-display font-black leading-none mb-2">
+        <span class="gradient-text text-5xl sm:text-6xl md:text-7xl">Thala</span>
+        <span class="text-white text-4xl sm:text-5xl md:text-6xl"> Thanga Guys</span>
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-        Brothers by choice. Chaos by default.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4 mb-16">
-        <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
-           class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-6 py-3.5 rounded-xl transition-all hover:scale-105">
-          <i class="fab fa-whatsapp text-lg"></i> Join WhatsApp Group
-        </a>
-      </div>
-      <!-- Stats -->
-      <div class="grid grid-cols-3 gap-4 max-w-sm mx-auto">
-        <div class="text-center">
-          <div class="font-display font-black text-3xl gradient-text">8+</div>
-          <div class="text-slate-500 text-xs mt-1">Years Strong</div>
-        </div>
-        <div class="text-center border-x border-slate-700">
-          <div class="font-display font-black text-3xl gradient-text">∞</div>
-          <div class="text-slate-500 text-xs mt-1">Inside Jokes</div>
-        </div>
-        <div class="text-center">
-          <div class="font-display font-black text-3xl gradient-text">0</div>
-          <div class="text-slate-500 text-xs mt-1">Plans On Time*</div>
-        </div>
-      </div>
-      <p class="text-slate-700 text-xs mt-2">*accurate</p>
+      <p class="text-slate-400 text-sm sm:text-base mb-5">Brothers by choice. Chaos by default.</p>
+      <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-5 py-2.5 rounded-xl transition-all hover:scale-105 text-sm">
+        <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+      </a>
     </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 text-xs animate-bounce">
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-4 right-6 flex flex-col items-center gap-1 text-slate-500 text-xs animate-bounce z-10">
       <span>scroll</span><i class="fas fa-chevron-down"></i>
     </div>
   </section>
@@ -200,23 +178,6 @@
 
   <!-- ── DATA & SCRIPTS ─────────────────────────────────── -->
   <script>
-    // ════════════════════════════════════════════════════════
-    // EDIT YOUR DATA HERE
-    // ════════════════════════════════════════════════════════
-
-    const GALLERY = [
-      // TRIPS — add your Cloudinary URLs here
-      { src: "https://res.cloudinary.com/z4fhnhlq/image/upload/v1784896529/IMG-20250126-WA0001_k0nuky.jpg", category: "trips", label: "Tiruchendur 2026" },
-      { src: "https://res.cloudinary.com/z4fhnhlq/image/upload/v1784896528/IMG-20260614-WA0000_bnpnnk.jpg", category: "trips", label: "Tiruchendur 2026" },
-      // BIRTHDAYS — add your Cloudinary URLs here
-      // EVENTS — add your Cloudinary URLs here
-    ];
-
-
-
-
-
-    // ════════════════════════════════════════════════════════
     // GALLERY
     // ════════════════════════════════════════════════════════
     function renderGallery(filter) {
