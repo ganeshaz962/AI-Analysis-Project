@@ -1,57 +1,438 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TTG Friends</title>
+  <title>TTG Friends — The Inner Circle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .gradient-text {
+      background: linear-gradient(135deg, #06b6d4, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    .container {
-      text-align: center;
-      color: #fff;
-      padding: 40px 20px;
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.5); }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 4px; }
+    .timeline-line { position: relative; }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #06b6d4, #10b981);
+      transform: translateX(-50%);
     }
-
-    h1 { font-size: 48px; font-weight: 800; letter-spacing: -1px; }
-    p  { font-size: 18px; color: #93c5fd; margin-top: 12px; }
-
-    .btn {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 14px 36px;
-      background: #fff;
-      color: #0f3460;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: opacity 0.2s;
+    @media (max-width: 640px) {
+      .timeline-line::before { left: 20px; }
+      .tl-row { flex-direction: column !important; padding-left: 48px; }
+      .tl-dot { left: 20px !important; }
+      .tl-spacer { display: none; }
     }
-    .btn:hover { opacity: 0.9; }
-
-    .note {
-      margin-top: 24px;
-      font-size: 12px;
-      color: #6b7280;
-    }
+    .masonry { columns: 3; column-gap: 1rem; }
+    @media (max-width: 768px) { .masonry { columns: 2; } }
+    @media (max-width: 480px) { .masonry { columns: 1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+    .quote-slide { display: none; animation: fadeIn 0.4s ease; }
+    .quote-slide.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .filter-btn.active { background: #06b6d4; color: #0f172a; border-color: #06b6d4; font-weight: 600; }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>TTG Friends</h1>
-    <p>Welcome! Please sign in to continue.</p>
-    <a href="/login" class="btn">Go to Login</a>
-    <p class="note">Protected by Cloudflare WAF &mdash; only /login path is allowed</p>
+<body class="bg-slate-900 text-white font-sans antialiased">
+
+  <!-- ── NAVIGATION ─────────────────────────────────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-slate-900/80 border-b border-slate-700/50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center font-black text-slate-900 text-sm">T</div>
+        <span class="font-display font-bold text-lg">TTG Friends</span>
+        <span class="hidden sm:inline text-xs text-slate-500 border border-slate-700 rounded-full px-2 py-0.5">Est. 2018</span>
+      </div>
+      <div class="hidden md:flex gap-7 text-sm text-slate-400">
+        <a href="#team"   class="hover:text-cyan-400 transition-colors">Team</a>
+        <a href="#gallery" class="hover:text-cyan-400 transition-colors">Gallery</a>
+        <a href="#events"  class="hover:text-cyan-400 transition-colors">Events</a>
+        <a href="#quotes"  class="hover:text-cyan-400 transition-colors">Quotes</a>
+      </div>
+      <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+         class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
+        <i class="fab fa-whatsapp"></i>
+        <span class="hidden sm:inline">Join Group</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-20 px-6">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-25 pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-cyan-500/30 rounded-full px-4 py-2 text-sm text-cyan-400 mb-8">
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+        Officially Unofficial Since 2018
+      </div>
+      <h1 class="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">
+        <span class="block text-white">We Showed Up.</span>
+        <span class="block gradient-text">We Never Left.</span>
+      </h1>
+      <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        A highly dysfunctional, deeply loyal group disrupting the friendship industry since 2018.
+        Series A funding: zero. Memories: priceless.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+           class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold px-6 py-3.5 rounded-xl transition-all hover:scale-105">
+          <i class="fab fa-whatsapp text-lg"></i> Join WhatsApp Group
+        </a>
+        <a href="#gallery"
+           class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-cyan-500/50 text-white font-semibold px-6 py-3.5 rounded-xl transition-all">
+          <i class="fas fa-images text-cyan-400"></i> Explore Memories
+        </a>
+      </div>
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 max-w-sm mx-auto">
+        <div class="text-center">
+          <div class="font-display font-black text-3xl gradient-text">8+</div>
+          <div class="text-slate-500 text-xs mt-1">Years Strong</div>
+        </div>
+        <div class="text-center border-x border-slate-700">
+          <div class="font-display font-black text-3xl gradient-text">∞</div>
+          <div class="text-slate-500 text-xs mt-1">Inside Jokes</div>
+        </div>
+        <div class="text-center">
+          <div class="font-display font-black text-3xl gradient-text">0</div>
+          <div class="text-slate-500 text-xs mt-1">Plans On Time*</div>
+        </div>
+      </div>
+      <p class="text-slate-700 text-xs mt-2">*accurate</p>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 text-xs animate-bounce">
+      <span>scroll</span><i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ── BOARD OF DIRECTORS ─────────────────────────────── -->
+  <section id="team" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Our People</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Board of Directors</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">The leadership team behind every bad idea, every great trip, and every 2am plan that somehow worked.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="team-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── MEMORY GALLERY ─────────────────────────────────── -->
+  <section id="gallery" class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">The Archive</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Memory Gallery</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Every trip, every celebration, every moment we'll pretend we remember clearly.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up">
+        <button class="filter-btn active px-4 py-2 rounded-full text-sm border border-slate-600 transition-all" data-filter="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="trips">🏖 Trips</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="birthdays">🎂 Birthdays</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="random">📸 Random</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm border border-slate-600 text-slate-400 transition-all" data-filter="shame">😅 Hall of Shame</button>
+      </div>
+      <div class="masonry" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── EVENT TIMELINE ─────────────────────────────────── -->
+  <section id="events" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Company Calendar</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Event Roadmap</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Past achievements and upcoming initiatives. Attendance mandatory.</p>
+      </div>
+      <div class="timeline-line" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ── QUOTES ─────────────────────────────────────────── -->
+  <section id="quotes" class="py-24 px-6 bg-slate-950/60">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Client Testimonials</p>
+        <h2 class="font-display font-black text-4xl sm:text-5xl mb-4">Words of Wisdom</h2>
+        <p class="text-slate-400">Real quotes. Zero context provided.</p>
+      </div>
+      <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 sm:p-12 fade-up">
+        <div class="text-cyan-400/40 text-7xl font-serif leading-none mb-4 select-none">"</div>
+        <div id="quote-container"></div>
+        <div class="flex items-center justify-between mt-8">
+          <button onclick="prevQuote()" class="w-10 h-10 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 flex items-center justify-center transition-colors">
+            <i class="fas fa-chevron-left text-sm"></i>
+          </button>
+          <div id="quote-dots" class="flex gap-2"></div>
+          <button onclick="nextQuote()" class="w-10 h-10 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 flex items-center justify-center transition-colors">
+            <i class="fas fa-chevron-right text-sm"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="border-t border-slate-800 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center font-black text-slate-900 text-sm">T</div>
+        <div>
+          <div class="font-display font-bold">TTG Friends</div>
+          <div class="text-slate-500 text-xs">© 2026 The Boys. All rights reserved.</div>
+        </div>
+      </div>
+      <a href="https://chat.whatsapp.com/YOUR_INVITE_LINK" target="_blank" rel="noopener"
+         class="flex items-center gap-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-semibold px-5 py-2.5 rounded-xl transition-all">
+        <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+      </a>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ───────────────────────────────────────── -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/92 hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <button class="absolute top-5 right-6 text-white/50 hover:text-white text-2xl"><i class="fas fa-times"></i></button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-xl object-contain" onclick="event.stopPropagation()" />
   </div>
+
+  <!-- ── DATA & SCRIPTS ─────────────────────────────────── -->
+  <script>
+    // ════════════════════════════════════════════════════════
+    // EDIT YOUR DATA HERE
+    // ════════════════════════════════════════════════════════
+
+    const TEAM = [
+      { name: "Your Name",    title: "Chief Executive Officer",   avatar: "", instagram: "https://instagram.com/" },
+      { name: "Friend 2",     title: "Chief Planning Officer",    avatar: "", instagram: "https://instagram.com/" },
+      { name: "Friend 3",     title: "Meme Director",             avatar: "", instagram: "https://instagram.com/" },
+      { name: "Friend 4",     title: "VP of Late Arrivals",       avatar: "", instagram: "https://instagram.com/" },
+      { name: "Friend 5",     title: "Head of Chaos",             avatar: "", instagram: "https://instagram.com/" },
+      { name: "Friend 6",     title: "Chief Food Officer",        avatar: "", instagram: "https://instagram.com/" },
+    ];
+
+    const GALLERY = [
+      { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80", category: "trips",     label: "Goa 2023" },
+      { src: "https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80", category: "birthdays", label: "Birthday Bash" },
+      { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", category: "trips",     label: "Manali 2022" },
+      { src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80", category: "birthdays", label: "Surprise Party" },
+      { src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80", category: "trips",     label: "Camping Trip" },
+      { src: "https://images.unsplash.com/photo-1543269664-76bc3997d9ea?w=600&q=80", category: "random",    label: "Just Vibes" },
+      { src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80", category: "random",    label: "Random Tuesday" },
+      { src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80", category: "shame",     label: "Don't Ask" },
+      { src: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=80", category: "trips",     label: "Beach Day" },
+    ];
+
+    const EVENTS = [
+      { date: "Dec 2023", title: "Goa Trip",           desc: "3 days of sun, chaos, and questionable decisions.",           type: "past",     img: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80" },
+      { date: "Feb 2024", title: "Birthday Bash",      desc: "Somehow kept it a surprise. A historic first.",              type: "past",     img: "https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=80" },
+      { date: "Jun 2024", title: "Manali Adventure",   desc: "Mountains, maggi, and a van that barely made it.",           type: "past",     img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" },
+      { date: "Aug 2026", title: "Annual Reunion",     desc: "The mandatory yearly gathering. All departments required.",   type: "upcoming", targetDate: "2026-08-15", rsvp: "https://forms.google.com" },
+      { date: "Dec 2026", title: "Year-End Gala",      desc: "Black tie optional. Chaos mandatory.",                       type: "upcoming", targetDate: "2026-12-20", rsvp: "https://forms.google.com" },
+    ];
+
+    const QUOTES = [
+      { text: "I'll be there in 10 minutes.",               author: "Someone, every time",     title: "Chief Late Arrival Officer" },
+      { text: "This is the last time I'm planning anything for you people.", author: "The Planner", title: "Chief Planning Officer (Resigned)" },
+      { text: "It's not that far, trust me.",               author: "The Navigator",            title: "VP of Wrong Directions" },
+      { text: "We said we'd do this every month.",          author: "All of Us, 2019",          title: "Collective Memory" },
+      { text: "Who shared my photo in that state?",        author: "Confidential",             title: "Head of PR & Damage Control" },
+    ];
+
+    // ════════════════════════════════════════════════════════
+    // RENDER TEAM
+    // ════════════════════════════════════════════════════════
+    const teamGrid = document.getElementById('team-grid');
+    TEAM.forEach(m => {
+      const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      const avatarHtml = m.avatar
+        ? `<img src="${m.avatar}" alt="${m.name}" class="w-full h-full object-cover" />`
+        : `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 text-2xl font-black text-cyan-400 font-display">${initials}</div>`;
+      teamGrid.innerHTML += `
+        <div class="card-hover bg-slate-800/60 border border-slate-700/50 hover:border-cyan-500/30 rounded-2xl p-6 flex flex-col items-center text-center fade-up">
+          <div class="w-20 h-20 rounded-2xl overflow-hidden mb-4 ring-2 ring-slate-700">${avatarHtml}</div>
+          <h3 class="font-display font-bold text-white text-lg leading-tight">${m.name}</h3>
+          <p class="text-cyan-400 text-xs font-medium mt-1 mb-4 leading-tight">${m.title}</p>
+          <a href="${m.instagram}" target="_blank" rel="noopener"
+             class="flex items-center gap-1.5 text-slate-500 hover:text-pink-400 text-sm transition-colors">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+        </div>`;
+    });
+
+    // ════════════════════════════════════════════════════════
+    // GALLERY
+    // ════════════════════════════════════════════════════════
+    function renderGallery(filter) {
+      const grid = document.getElementById('gallery-grid');
+      grid.innerHTML = '';
+      GALLERY.filter(i => filter === 'all' || i.category === filter).forEach(item => {
+        grid.innerHTML += `
+          <div class="masonry-item group cursor-pointer" onclick="openLightbox('${item.src}')">
+            <div class="relative overflow-hidden rounded-xl">
+              <img src="${item.src}" alt="${item.label}" loading="lazy"
+                   class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                <span class="text-white text-sm font-semibold">${item.label}</span>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+    renderGallery('all');
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active'); b.classList.add('text-slate-400');
+        });
+        btn.classList.add('active'); btn.classList.remove('text-slate-400');
+        renderGallery(btn.dataset.filter);
+      });
+    });
+
+    // ════════════════════════════════════════════════════════
+    // TIMELINE
+    // ════════════════════════════════════════════════════════
+    const timeline = document.getElementById('timeline');
+    EVENTS.forEach((ev, i) => {
+      const isPast   = ev.type === 'past';
+      const isLeft   = i % 2 === 0;
+      const dotColor = isPast ? 'bg-cyan-400' : 'bg-emerald-400';
+      const cardSide = isLeft ? '' : 'sm:flex-row-reverse';
+
+      timeline.innerHTML += `
+        <div class="tl-row relative flex ${cardSide} items-center gap-6 mb-10 fade-up">
+          <div class="flex-1 ${isLeft ? 'sm:text-right' : 'sm:text-left'}">
+            <div class="card-hover bg-slate-800/70 border border-slate-700 hover:border-${isPast ? 'cyan' : 'emerald'}-500/40 rounded-2xl p-5 inline-block w-full max-w-sm">
+              ${isPast && ev.img ? `<img src="${ev.img}" alt="${ev.title}" class="w-full h-28 object-cover rounded-lg mb-3" loading="lazy" />` : ''}
+              ${!isPast ? `<div id="cd-${i}" class="text-2xl font-black gradient-text font-display mb-2"></div>` : ''}
+              <div class="text-xs font-bold ${isPast ? 'text-cyan-400' : 'text-emerald-400'} mb-1">${ev.date}</div>
+              <h3 class="font-display font-bold text-white text-lg">${ev.title}</h3>
+              <p class="text-slate-400 text-sm mt-1 mb-3">${ev.desc}</p>
+              ${isPast
+                ? `<span class="inline-flex items-center gap-1 text-xs text-slate-500"><i class="fas fa-check-circle text-cyan-400"></i> Completed</span>`
+                : `<a href="${ev.rsvp}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-sm font-semibold px-3 py-1.5 rounded-lg transition-all">RSVP <i class="fas fa-arrow-right text-xs"></i></a>`
+              }
+            </div>
+          </div>
+          <div class="tl-dot absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full ${dotColor} ring-4 ring-slate-900 z-10"></div>
+          <div class="tl-spacer flex-1"></div>
+        </div>`;
+    });
+
+    // Countdown timers
+    function tick() {
+      EVENTS.forEach((ev, i) => {
+        if (ev.type !== 'upcoming') return;
+        const el = document.getElementById(`cd-${i}`);
+        if (!el) return;
+        const diff = new Date(ev.targetDate) - new Date();
+        if (diff <= 0) { el.textContent = "It's time! 🎉"; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        el.textContent = `${d}d ${h}h to go`;
+      });
+    }
+    tick();
+    setInterval(tick, 60000);
+
+    // ════════════════════════════════════════════════════════
+    // QUOTES SLIDER
+    // ════════════════════════════════════════════════════════
+    let qIdx = 0;
+    const qContainer = document.getElementById('quote-container');
+    const qDots      = document.getElementById('quote-dots');
+
+    QUOTES.forEach((q, i) => {
+      const initials = q.author.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      qContainer.innerHTML += `
+        <div class="quote-slide ${i === 0 ? 'active' : ''}">
+          <p class="text-white text-xl sm:text-2xl font-medium leading-relaxed mb-6">${q.text}</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-900 font-bold text-sm flex-shrink-0">${initials}</div>
+            <div>
+              <div class="text-white font-semibold text-sm">${q.author}</div>
+              <div class="text-slate-500 text-xs">${q.title}</div>
+            </div>
+          </div>
+        </div>`;
+      qDots.innerHTML += `<button class="h-2 rounded-full transition-all duration-300 ${i === 0 ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-600'}" onclick="goToQuote(${i})"></button>`;
+    });
+
+    function goToQuote(n) {
+      document.querySelectorAll('.quote-slide').forEach((s, i) => s.classList.toggle('active', i === n));
+      document.querySelectorAll('#quote-dots button').forEach((d, i) => {
+        d.className = `h-2 rounded-full transition-all duration-300 ${i === n ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-600'}`;
+      });
+      qIdx = n;
+    }
+    function nextQuote() { goToQuote((qIdx + 1) % QUOTES.length); }
+    function prevQuote() { goToQuote((qIdx - 1 + QUOTES.length) % QUOTES.length); }
+    const autoSlide = setInterval(nextQuote, 5000);
+    document.querySelector('#quotes').addEventListener('mouseenter', () => clearInterval(autoSlide));
+
+    // ════════════════════════════════════════════════════════
+    // LIGHTBOX
+    // ════════════════════════════════════════════════════════
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden'); lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden'); lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // ════════════════════════════════════════════════════════
+    // SCROLL ANIMATIONS
+    // ════════════════════════════════════════════════════════
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+
+    function observeAll() {
+      document.querySelectorAll('.fade-up:not([data-obs])').forEach(el => {
+        el.dataset.obs = '1'; io.observe(el);
+      });
+    }
+    observeAll();
+    new MutationObserver(observeAll).observe(document.body, { childList: true, subtree: true });
+  </script>
 </body>
 </html>
